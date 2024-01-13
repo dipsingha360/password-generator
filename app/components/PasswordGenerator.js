@@ -12,6 +12,8 @@ const PasswordGenerator = () => {
   const passwordRef = useRef(null);
 
   const copyPassword = useCallback(() => {
+    passwordRef.current?.select();
+    passwordRef.current?.setSelectionRange(0, 40);
     navigator.clipboard.writeText(password);
   }, [password]);
 
@@ -53,7 +55,7 @@ const PasswordGenerator = () => {
           <button
             onClick={copyPassword}
             type="button"
-            className="bg-green-500 px-5 py-2 rounded-md"
+            className="bg-green-500 px-5 py-2 rounded-md hover:bg-green-500/90 duration-150"
           >
             Copy
           </button>
